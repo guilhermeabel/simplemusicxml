@@ -1,0 +1,9 @@
+simple\musicxml\ViewController.class
+simple\musicxml\Note.class
+simple\musicxml\Tag.class
+module-info.class
+simple\musicxml\App.class
+simple\musicxml\Player.class
+simple\musicxml\Parser.class
+simple\musicxml\MusicXML.class
+simple\musicxml\Output.class

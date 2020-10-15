@@ -1,0 +1,70 @@
+.button_1 {
+    border: 0;
+    outline: 0;
+    background-color: #24445a;
+    font-weight: bold;
+    -fx-text-fill: #a7b8b3;
+    -fx-font-weight: bold;
+    -fx-background-color: #24445a;
+    -fx-background-radius: 0;
+}
+
+.button_1:hover {
+    background-color: #3E5D79;
+    -fx-background-color: #3E5D79;
+}
+
+.button_2 {
+    border: 0;
+    outline: 0;
+    background-color: #30ab6d;
+    font-weight: bold;
+    -fx-text-fill: #f1f1f1;
+    -fx-font-weight: bold;
+    -fx-background-color: #30ab6d;
+    -fx-background-radius: 0;
+}
+
+.button_2:hover {
+    background-color: #316e60;
+    -fx-background-color: #316e60;
+}
+
+.textField {
+    border: 0;
+    outline: 0;
+    background-color: #24445a;
+    -fx-text-fill: #a7b8b3;
+    -fx-background-color: #24445a;
+    -fx-background-radius: 0;
+}
+
+.sliderBPM {
+    border: 0;
+    outline: 0;
+    background-color: #162636;
+    font-weight: bold;
+    -fx-text-fill: #cad7d3;
+    -fx-font-weight: bold;
+    -fx-background-color: #162636;
+    -fx-background-radius: 0;
+}
+
+.sheetPanel {
+    -fx-text-fill: #0e2842;
+    -fx-background-radius: 0;
+    -text-area-background: #374858;
+    border-color: #162636;
+    -fx-border-color: #162636;
+    font-size: 2.5em;
+    -fx-font-size: 2.5em;
+    font-family: Arial;
+    -fx-font-family: Arial;
+}
+
+.sheetPanel .content {
+    background-color: #374858;
+    -fx-background-color: -text-area-background;
+    border-color: #162636;
+    -fx-border-color: #162636;
+}
