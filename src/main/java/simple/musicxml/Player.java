@@ -36,37 +36,52 @@ public class Player implements MetaEventListener {
 
     public Sequence createSequence() {
         try {
-            Sequence seq = new Sequence(Sequence.PPQ, 1);
-            Track track = seq.createTrack();
+            Sequence seq = new Sequence(Sequence.PPQ, 2);
+            Track main_track = seq.createTrack();
+            Track metronome = seq.createTrack();
+
             int x = vectorLength - 1;
             int i = 0;
+
             while ("\u25CB".equals(vector[x])) {
                 i++;
                 x--;
+                addMetronomeEvent(metronome, 2);
                 if (x == 0) {
                     break;
                 }
             }
             x = i;
+
             for (i = 0; i < vector.length; i++) {
                 if (vector[i].equals("\u25CF")) {
-                    addNoteEvent(track, (i + x) + 1);
+                    addNoteEvent(main_track, (i + x) + 1);
+                    addMetronomeEvent(metronome, 2);
                 }
-                /*
-                 * else if (vector[i].equals("\u25CB")) { addNoteEvent(track, i - 1); }
-                 */
             }
+
+            // for (i = 0; i < vector.length; i++) {
+            //     addMetronomeEvent(metronome, 1);
+            // }
+
             return seq;
+
         } catch (InvalidMidiDataException ex) {
             Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
 
-    private void addNoteEvent(Track track, long tick) throws InvalidMidiDataException {
+    private void addNoteEvent(Track main_track, long tick) throws InvalidMidiDataException {
         ShortMessage message = new ShortMessage(ShortMessage.NOTE_ON, 9, 37, 100);
         MidiEvent event = new MidiEvent(message, tick);
-        track.add(event);
+        main_track.add(event);
+    }
+
+    private void addMetronomeEvent(Track metronome, long tick) throws InvalidMidiDataException {
+        ShortMessage message = new ShortMessage(ShortMessage.NOTE_ON, 0, 100, 30);
+        MidiEvent event = new MidiEvent(message, tick);
+        metronome.add(event);
     }
 
     private Sequence startSequence(Sequence seq) throws InvalidMidiDataException {
@@ -77,7 +92,7 @@ public class Player implements MetaEventListener {
     }
 
     public void meta(MetaMessage message) {
-        if (message.getType() != 47) { // 47 é o final da track
+        if (message.getType() != 47) {
             return;
         }
         doLoop();
