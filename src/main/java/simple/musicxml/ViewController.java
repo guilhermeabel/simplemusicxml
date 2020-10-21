@@ -59,13 +59,14 @@ public class ViewController {
     @FXML
     private Slider sliderBPM;
     private Sequence seq;
+    private Sequence seq_metronome;
 
     @FXML
     void initialize() {
         play.setDisable(true);
         stop.setDisable(true);
         reset.setDisable(true);
-        //funcTeste();
+        // funcTeste();
     }
 
     @FXML
@@ -89,10 +90,10 @@ public class ViewController {
 
         if (f != null) {
             filePath.setText(f.getAbsolutePath());
+            play.setDisable(false);
+            fileButton.setDisable(true);
+            config();
         }
-        config();
-        play.setDisable(false);
-        fileButton.setDisable(true);
     }
 
     private void config() {
@@ -133,6 +134,7 @@ public class ViewController {
         int bpm = (int) sliderBPM.getValue();
         bpm *= 2;
         new Player().start(bpm, vector.length, vector);
+        new Metronome().start(bpm, vector.length, vector);
         play.setDisable(true);
         stop.setDisable(false);
         reset.setDisable(false);
@@ -141,6 +143,7 @@ public class ViewController {
     @FXML
     void resetMusic(ActionEvent event) throws InvalidMidiDataException {
         Player.stopPlayback(this.seq);
+        Metronome.stopPlayback(this.seq_metronome);
         resetFields();
         play.setDisable(true);
         stop.setDisable(true);
@@ -151,6 +154,7 @@ public class ViewController {
     @FXML
     void stopMusic(ActionEvent event) throws InvalidMidiDataException {
         Player.stopPlayback(this.seq);
+        Metronome.stopPlayback(this.seq_metronome);
         play.setDisable(false);
     }
 
@@ -160,11 +164,4 @@ public class ViewController {
         filePath.setText("");
     }
 
-    void funcTeste(){
-        for (int i = 0; i < 8; i ++){
-            sheetPanel.appendText("\u25CF");
-            sheetPanel.appendText("\u25CB");
-        }        
-    }
-    
 }

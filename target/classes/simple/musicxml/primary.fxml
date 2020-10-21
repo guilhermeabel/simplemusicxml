@@ -14,34 +14,34 @@
    <children>
       <AnchorPane layoutY="145.0" prefHeight="147.0" prefWidth="600.0" style="-fx-background-color: #162636;">
          <children>
-            <Text fill="#a7b8b3" layoutX="185.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seja bem-vindo ao SimpleMusicXML!">
+            <Text fill="#a7b8b3" layoutX="180.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seja bem-vindo ao SimpleMusicXML!">
                <font>
                   <Font name="Segoe UI" size="14.0" />
                </font>
             </Text>
-            <Text fill="#a7b8b3" layoutX="120.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Para começar, insira uma partitura no formato ">
+            <Text fill="#a7b8b3" layoutX="88.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Para começar, insira uma partitura no formato ">
                <font>
                   <Font name="Segoe UI" size="14.0" />
                </font>
             </Text>
-            <Text fill="#cad7d3" layoutX="407.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text=".musicxml">
+            <Text fill="#cad7d3" layoutX="420.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text=".musicxml">
                <font>
-                  <Font name="Segoe UI Bold" size="14.0" />
+                  <Font name="System Bold" size="16.0" />
                </font>
             </Text>
-            <Button fx:id="fileButton" layoutX="67.0" layoutY="95.0" mnemonicParsing="false" onAction="#selectFile" prefHeight="25.0" prefWidth="85.0" styleClass="button_2" text="Selecionar..." />
-            <TextField id="textField" fx:id="filePath" layoutX="164.0" layoutY="95.0" mouseTransparent="true" prefHeight="25.0" prefWidth="377.0" styleClass="textField" stylesheets="@style.css" />
+            <Button fx:id="fileButton" layoutX="39.0" layoutY="95.0" mnemonicParsing="false" onAction="#selectFile" prefHeight="26.0" prefWidth="122.0" styleClass="button_2" text="Selecionar..." />
+            <TextField id="textField" fx:id="filePath" layoutX="173.0" layoutY="95.0" mouseTransparent="true" prefHeight="26.0" prefWidth="386.0" styleClass="textField" stylesheets="@style.css" />
          </children>
       </AnchorPane>
       <Pane prefHeight="30.0" prefWidth="600.0" style="-fx-background-color: #374858;" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="minimize" layoutX="540.0" mnemonicParsing="false" onAction="#minimizeFrame" prefHeight="30.0" prefWidth="30.0" styleClass="button_1" stylesheets="@style.css" text="➖" textFill="#a7b8b3" />
-            <Button fx:id="close" layoutX="570.0" mnemonicParsing="false" onAction="#closeFrame" prefHeight="30.0" prefWidth="30.0" styleClass="button_1" stylesheets="@style.css" text="❌" textFill="#a7b8b3" />
+            <Button fx:id="minimize" layoutX="540.0" mnemonicParsing="false" onAction="#minimizeFrame" prefHeight="30.0" prefWidth="30.0" styleClass="button_1" stylesheets="@style.css" text="−" textFill="#a7b8b3" />
+            <Button fx:id="close" layoutX="570.0" mnemonicParsing="false" onAction="#closeFrame" prefHeight="30.0" prefWidth="30.0" styleClass="button_1" stylesheets="@style.css" text="X" textFill="#a7b8b3" />
          </children>
       </Pane>
       <AnchorPane layoutY="29.0" prefHeight="101.0" prefWidth="600.0" style="-fx-background-color: #162636;" AnchorPane.topAnchor="29.0">
          <children>
-            <TextFlow layoutX="104.0" layoutY="11.0" prefHeight="62.0" prefWidth="393.0">
+            <TextFlow layoutX="107.0" layoutY="17.0" prefHeight="62.0" prefWidth="393.0">
                <children>
                   <Text fill="#316e60" strokeType="OUTSIDE" strokeWidth="0.0" text="simple" wrappingWidth="118.17236328125">
                      <font>

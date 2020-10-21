@@ -38,7 +38,6 @@ public class Player implements MetaEventListener {
         try {
             Sequence seq = new Sequence(Sequence.PPQ, 2);
             Track main_track = seq.createTrack();
-            Track metronome = seq.createTrack();
 
             int x = vectorLength - 1;
             int i = 0;
@@ -46,7 +45,6 @@ public class Player implements MetaEventListener {
             while ("\u25CB".equals(vector[x])) {
                 i++;
                 x--;
-                addMetronomeEvent(metronome, 2);
                 if (x == 0) {
                     break;
                 }
@@ -56,13 +54,9 @@ public class Player implements MetaEventListener {
             for (i = 0; i < vector.length; i++) {
                 if (vector[i].equals("\u25CF")) {
                     addNoteEvent(main_track, (i + x) + 1);
-                    addMetronomeEvent(metronome, 2);
                 }
             }
 
-            // for (i = 0; i < vector.length; i++) {
-            //     addMetronomeEvent(metronome, 1);
-            // }
 
             return seq;
 
@@ -76,12 +70,6 @@ public class Player implements MetaEventListener {
         ShortMessage message = new ShortMessage(ShortMessage.NOTE_ON, 9, 37, 100);
         MidiEvent event = new MidiEvent(message, tick);
         main_track.add(event);
-    }
-
-    private void addMetronomeEvent(Track metronome, long tick) throws InvalidMidiDataException {
-        ShortMessage message = new ShortMessage(ShortMessage.NOTE_ON, 0, 100, 30);
-        MidiEvent event = new MidiEvent(message, tick);
-        metronome.add(event);
     }
 
     private Sequence startSequence(Sequence seq) throws InvalidMidiDataException {
@@ -102,9 +90,11 @@ public class Player implements MetaEventListener {
         if (sequencer == null || !sequencer.isOpen()) {
             return;
         }
-        sequencer.setTickPosition(0);
+        sequencer.setTickPosition(1);
+        sequencer.setLoopStartPoint(0);
         sequencer.start();
         sequencer.setTempoInBPM(bpm);
+        sequencer.setTempoFactor(1);
     }
 
     protected static void stopPlayback(Sequence seq) throws InvalidMidiDataException {
