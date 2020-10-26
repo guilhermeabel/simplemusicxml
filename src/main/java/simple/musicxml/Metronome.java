@@ -39,7 +39,7 @@ public class Metronome implements MetaEventListener {
             Sequence seq_metronome = new Sequence(Sequence.PPQ, 1);
             Track metronome = seq_metronome.createTrack();
 
-            int x = vectorLength - 1;
+            //int x = vectorLength - 1;
             int i = 0;
 
             // while (vector[x] != null) {

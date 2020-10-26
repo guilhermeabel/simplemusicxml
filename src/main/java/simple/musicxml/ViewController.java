@@ -91,6 +91,7 @@ public class ViewController {
         if (f != null) {
             filePath.setText(f.getAbsolutePath());
             play.setDisable(false);
+            reset.setDisable(false);
             fileButton.setDisable(true);
             config();
         }
@@ -116,13 +117,23 @@ public class ViewController {
         String outArray[][] = new String[2][(vectorLenght / 2) + 1];
         outArray = parser.setSimpleArray(vector, vectorLenght);
         // exibe na GUI o conteúdo do vetor
-        sheetPanel.appendText(" ");
-        for (int i = 0; i < outArray[0].length; i++) {
-            sheetPanel.appendText(outArray[0][i] + "  ");
+        sheetPanel.appendText("  ");
+        for (int i = 0, x = 0; i < outArray[0].length; i++) {
+            sheetPanel.appendText(outArray[0][i] + " ");
+            if (x == 2 && (outArray[0].length - i > 1)) {
+                sheetPanel.appendText("/");
+                x = 0;
+            }
+            x++;
         }
         sheetPanel.appendText("\n");
-        for (int i = 0; i < outArray[1].length; i++) {
-            sheetPanel.appendText(outArray[1][i] + "  ");
+        for (int i = 0, x = 1; i < outArray[1].length; i++) {
+            sheetPanel.appendText(outArray[1][i] + " ");
+            if (x == 2 && (outArray[0].length - i > 2)) {
+                sheetPanel.appendText("/");
+                x = 0;
+            }
+            x++;
         }
         // output.getAtributos(lines, array);
         output.createFile(lines, array, outArray);
@@ -142,8 +153,10 @@ public class ViewController {
 
     @FXML
     void resetMusic(ActionEvent event) throws InvalidMidiDataException {
-        Player.stopPlayback(this.seq);
-        Metronome.stopPlayback(this.seq_metronome);
+        if (seq != null) {
+            Player.stopPlayback(this.seq); // Chamada do Player
+            Metronome.stopPlayback(this.seq_metronome); // Chamada do Metronomo
+        }
         resetFields();
         play.setDisable(true);
         stop.setDisable(true);

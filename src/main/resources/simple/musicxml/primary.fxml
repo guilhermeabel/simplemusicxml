@@ -59,7 +59,7 @@
       </AnchorPane>
       <AnchorPane layoutY="307.0" prefHeight="229.0" prefWidth="600.0" style="-fx-background-color: #162636;">
          <children>
-            <TextArea fx:id="sheetPanel" layoutX="39.0" layoutY="23.0" mouseTransparent="true" prefHeight="183.0" prefWidth="523.0" styleClass="sheetPanel" />
+            <TextArea fx:id="sheetPanel" layoutX="39.0" layoutY="23.0" mouseTransparent="false" prefHeight="183.0" prefWidth="523.0" styleClass="sheetPanel" />
          </children>
       </AnchorPane>
       <AnchorPane layoutY="551.0" prefHeight="147.0" prefWidth="600.0" style="-fx-background-color: #162636;">
