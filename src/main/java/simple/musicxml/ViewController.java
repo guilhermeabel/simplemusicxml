@@ -117,27 +117,36 @@ public class ViewController {
         String outArray[][] = new String[2][(vectorLenght / 2) + 1];
         outArray = parser.setSimpleArray(vector, vectorLenght);
         // exibe na GUI o conteúdo do vetor
-        sheetPanel.appendText("  ");
-        for (int i = 0, x = 0; i < outArray[0].length; i++) {
-            sheetPanel.appendText(outArray[0][i] + " ");
-            if (x == 2 && (outArray[0].length - i > 1)) {
-                sheetPanel.appendText("/");
-                x = 0;
+
+        for (int i = 0, pos0 = 0, pos1 = 0; i < 4; i++) {
+            if (i > 0) {
+                sheetPanel.appendText("\n"); // evita quebra de linha antes da primeira linha
+                sheetPanel.appendText("    "); // espaço vazio da partitura do ó
             }
-            x++;
-        }
-        sheetPanel.appendText("\n");
-        for (int i = 0, x = 1; i < outArray[1].length; i++) {
-            sheetPanel.appendText(outArray[1][i] + " ");
-            if (x == 2 && (outArray[0].length - i > 2)) {
-                sheetPanel.appendText("/");
-                x = 0;
+
+            for (int x = 0; pos0 < outArray[0].length; pos0++) {
+                sheetPanel.appendText(outArray[0][pos0] + " ");
+                if (x == 4) { // x = 4 define o measure
+                    x = 0;
+                    pos0++;
+                    break;
+                }
+                x++;
             }
-            x++;
+
+            sheetPanel.appendText("\n");
+            for (int x = 1; pos1 < outArray[1].length; pos1++) {
+                sheetPanel.appendText(outArray[1][pos1] + " ");
+                if (x == 4) { // x = 4 define o measure
+                    x = 0;
+                    pos1++;
+                    break;
+                }
+                x++;
+            }
         }
         // output.getAtributos(lines, array);
         output.createFile(lines, array, outArray);
-
     }
 
     @FXML

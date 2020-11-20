@@ -63,7 +63,7 @@ public class Parser {
         for (int i = 0, j = 0; j < column; j++) {
 
             if (i == 0 && j == 0) {
-                outArray[i][j] = " ";
+                outArray[i][j] = "   "; // primeiro espaço
                 i++;
             }
             if (j == (column - 1) && i == 1) {
